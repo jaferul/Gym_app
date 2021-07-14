@@ -11,7 +11,6 @@ class FavoriteWidget extends StatefulWidget{
   @override
   _FavoriteWidgetState createState() => _FavoriteWidgetState();
 }
-
 class _FavoriteWidgetState extends State<FavoriteWidget>{
   bool _isFavorited = true;
   int _favoriteCount = 41;
@@ -52,6 +51,27 @@ class _FavoriteWidgetState extends State<FavoriteWidget>{
   }
 }
 
+Column _buildButtonColumn(Color color, IconData icon, String label) {
+  return Column(
+    mainAxisSize: MainAxisSize.min,
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Icon(icon, color: color),
+      Container(
+        margin: const EdgeInsets.only(top: 8),
+        child: Text(
+          label,
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+            color: color,
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -61,21 +81,23 @@ class MyApp extends StatelessWidget {
         children: [
           Expanded(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
-                    'Oeschinen Lake Campground',
+                    'Gym app',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
+                      fontSize: 50,
                     ),
                   ),
                 ),
                 Text(
-                  'Kandersteg, Switzerland',
+                  'Ez game Ez life',
                   style: TextStyle(
                     color: Colors.grey[500],
+                    fontSize: 25,
                   ),
                 ),
               ],
@@ -85,19 +107,41 @@ class MyApp extends StatelessWidget {
         ],
       ),
     );
-    Color color = Theme
-        .of(context)
-        .primaryColor;
-    Widget buttonSection = Container(
+
+/*    Widget buttonSection = Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildButtonColumn(color, Icons.call, 'CALL'),
-          _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
-          _buildButtonColumn(color, Icons.share, 'SHARE'),
+          _buildButtonColumn(Colors.blueAccent, Icons.fitness_center, 'WORKOUTS'),
+          _buildButtonColumn(Colors.black, Icons.fastfood, 'FOOD'),
+          _buildButtonColumn(Colors.red, Icons.library_music, 'MUSIC'),
         ],
       ),
+    );*/
+
+    Widget buttonSection = Container(
+      child: Column(
+        children: [
+        Row(
+         mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _buildButtonColumn(Colors.blueAccent, Icons.fitness_center, 'WORKOUTS'),
+            _buildButtonColumn(Colors.black, Icons.fastfood, 'FOOD'),
+            _buildButtonColumn(Colors.red, Icons.library_music, 'MUSIC'),
+          ],
+        ),
+          SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(width: 25),
+            _buildButtonColumn(Colors.black, Icons.access_time, 'PROGRESS')
+          ],
+        ),
+      ],
+      ),
     );
+
     Widget textSection = Container(
       padding: const EdgeInsets.all(32),
       child: Text(
@@ -110,11 +154,12 @@ class MyApp extends StatelessWidget {
         softWrap: true,
       ),
     );
+
     return MaterialApp(
-      title: 'Flutter layout demo',
+      title: 'Gym app demo',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Flutter layout demo'),
+          title: Text('Gym app demo'),
         ),
         body: ListView(
           children: [
@@ -130,27 +175,6 @@ class MyApp extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-
-  Column _buildButtonColumn(Color color, IconData icon, String label) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(icon, color: color),
-        Container(
-          margin: const EdgeInsets.only(top: 8),
-          child: Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: color,
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
