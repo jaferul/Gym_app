@@ -7,6 +7,9 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 
+
+
+
 class FavoriteWidget extends StatefulWidget{
   @override
   _FavoriteWidgetState createState() => _FavoriteWidgetState();
@@ -59,7 +62,7 @@ Column _buildButtonColumn(Color color, IconData icon, String label) {
       Icon(icon, color: color),
       Container(
         margin: const EdgeInsets.only(top: 8),
-        child: Text(
+          child: Text(
           label,
           style: TextStyle(
             fontSize: 12,
@@ -67,7 +70,7 @@ Column _buildButtonColumn(Color color, IconData icon, String label) {
             color: color,
           ),
         ),
-      ),
+        ),
     ],
   );
 }
@@ -108,50 +111,46 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-/*    Widget buttonSection = Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _buildButtonColumn(Colors.blueAccent, Icons.fitness_center, 'WORKOUTS'),
-          _buildButtonColumn(Colors.black, Icons.fastfood, 'FOOD'),
-          _buildButtonColumn(Colors.red, Icons.library_music, 'MUSIC'),
-        ],
-      ),
-    );*/
-
     Widget buttonSection = Container(
       child: Column(
         children: [
         Row(
          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            _buildButtonColumn(Colors.blueAccent, Icons.fitness_center, 'WORKOUTS'),
-            _buildButtonColumn(Colors.black, Icons.fastfood, 'FOOD'),
-            _buildButtonColumn(Colors.red, Icons.library_music, 'MUSIC'),
+              FlatButton(
+                onPressed: () {},
+                padding: EdgeInsets.all(10.0),
+                child: //Column(
+                  _buildButtonColumn(Colors.blueAccent, Icons.fitness_center, 'WORKOUTS'),
+                ),
+              FlatButton(
+                onPressed: () {},
+                padding: EdgeInsets.all(10.0),
+                child: //Column(
+                _buildButtonColumn(Colors.black, Icons.fastfood, 'FOOD'),
+              ),
+              FlatButton(
+                onPressed: () {},
+                padding: EdgeInsets.all(10.0),
+                child: //Column(
+                _buildButtonColumn(Colors.red, Icons.library_music, 'MUSIC'),
+              ),
           ],
         ),
           SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(width: 25),
-            _buildButtonColumn(Colors.black, Icons.access_time, 'PROGRESS')
+            FlatButton(
+              onPressed: () {},
+              padding: EdgeInsets.all(10.0),
+              child: //Column(
+              _buildButtonColumn(Colors.black, Icons.access_time, 'PROGRESS')
+            ),
+
           ],
         ),
       ],
-      ),
-    );
-
-    Widget textSection = Container(
-      padding: const EdgeInsets.all(32),
-      child: Text(
-        'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
-            'Alps. Situated 1,578 meters above sea level, it is one of the '
-            'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
-            'half-hour walk through pastures and pine forest, leads you to the '
-            'lake, which warms to 20 degrees Celsius in the summer. Activities '
-            'enjoyed here include rowing, and riding the summer toboggan run.',
-        softWrap: true,
       ),
     );
 
@@ -171,7 +170,7 @@ class MyApp extends StatelessWidget {
             ),
             titleSection,
             buttonSection,
-            textSection,
+            //textSection,
           ],
         ),
       ),
@@ -179,3 +178,21 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class WorkoutPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Second Route"),
+      ),
+      body: Center(
+        child: FlatButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text('Go back!'),
+        ),
+      ),
+    );
+  }
+}
