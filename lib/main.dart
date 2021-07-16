@@ -4,8 +4,12 @@
 
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
-
+void main() {
+  runApp(MaterialApp(
+    title: 'Navigation Basics',
+    home: MyApp(),
+  ));
+}
 
 
 
@@ -118,19 +122,37 @@ class MyApp extends StatelessWidget {
          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
               FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => WorkoutPage()),
+                  );
+
+                },
                 padding: EdgeInsets.all(10.0),
                 child: //Column(
                   _buildButtonColumn(Colors.blueAccent, Icons.fitness_center, 'WORKOUTS'),
                 ),
               FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FoodPage()),
+                  );
+
+                },
                 padding: EdgeInsets.all(10.0),
                 child: //Column(
                 _buildButtonColumn(Colors.black, Icons.fastfood, 'FOOD'),
               ),
               FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MusicPage()),
+                  );
+
+                },
                 padding: EdgeInsets.all(10.0),
                 child: //Column(
                 _buildButtonColumn(Colors.red, Icons.library_music, 'MUSIC'),
@@ -142,7 +164,13 @@ class MyApp extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FlatButton(
-              onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProgressPage()),
+                  );
+
+                },
               padding: EdgeInsets.all(10.0),
               child: //Column(
               _buildButtonColumn(Colors.black, Icons.access_time, 'PROGRESS')
@@ -170,7 +198,6 @@ class MyApp extends StatelessWidget {
             ),
             titleSection,
             buttonSection,
-            //textSection,
           ],
         ),
       ),
@@ -178,12 +205,69 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class WorkoutPage extends StatelessWidget {
+  class WorkoutPage extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text("Workouts"),
+        ),
+        body: Center(
+          child: FlatButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('Go back!'),
+          ),
+        ),
+      );
+    }
+  }
+
+class FoodPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Route"),
+        title: Text("Food"),
+      ),
+      body: Center(
+        child: FlatButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text('Go back!'),
+        ),
+      ),
+    );
+  }
+}
+
+class ProgressPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Progress"),
+      ),
+      body: Center(
+        child: FlatButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text('Go back!'),
+        ),
+      ),
+    );
+  }
+}
+
+class MusicPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Music"),
       ),
       body: Center(
         child: FlatButton(
