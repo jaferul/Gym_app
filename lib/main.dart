@@ -1,7 +1,7 @@
 // Copyright 2018 The Flutter team. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
-
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -212,13 +212,56 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text("Workouts"),
         ),
-        body: Center(
-          child: FlatButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text('Go back!'),
-          ),
+        body: ListView(
+          children: [
+            CarouselSlider(
+              items: [
+                Container(
+                  margin: EdgeInsets.all(6.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                    image: DecorationImage(
+                      image: NetworkImage('https://m.economictimes.com/thumb/msid-77342362,width-1200,height-900,resizemode-4,imgsize-419941/gym.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+
+                Container(
+                  margin: EdgeInsets.all(6.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                    image: DecorationImage(
+                      image: NetworkImage('https://m.economictimes.com/thumb/msid-77342362,width-1200,height-900,resizemode-4,imgsize-419941/gym.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+
+                Container(
+                  margin: EdgeInsets.all(6.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                    image: DecorationImage(
+                      image: NetworkImage('https://m.economictimes.com/thumb/msid-77342362,width-1200,height-900,resizemode-4,imgsize-419941/gym.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ],
+
+              options: CarouselOptions(
+                height: 180.0,
+                enlargeCenterPage: true,
+                autoPlay: true,
+                aspectRatio: 16 / 9,
+                autoPlayCurve: Curves.fastOutSlowIn,
+                enableInfiniteScroll: true,
+                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                viewportFraction: 0.8,
+              ),
+            ),
+          ],
         ),
       );
     }
