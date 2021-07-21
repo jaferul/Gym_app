@@ -261,6 +261,30 @@ class MyApp extends StatelessWidget {
                 viewportFraction: 0.8,
               ),
             ),
+            ListTile(
+              leading: Icon(Icons.fitness_center),
+              title: Text('Chest'),
+            ),
+            ListTile(
+              leading: Icon(Icons.fitness_center),
+              title: Text('Back'),
+            ),
+            ListTile(
+              leading: Icon(Icons.fitness_center),
+              title: Text('Legs'),
+            ),
+            ListTile(
+              leading: Icon(Icons.fitness_center),
+              title: Text('Shoulders'),
+            ),
+            ListTile(
+              leading: Icon(Icons.fitness_center),
+              title: Text('Arms'),
+            ),
+            ListTile(
+              leading: Icon(Icons.fitness_center),
+              title: Text('My Workouts'),
+            ),
           ],
         ),
       );
