@@ -1,8 +1,11 @@
 // Copyright 2018 The Flutter team. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
+
+import 'package:camera/camera.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -10,9 +13,6 @@ void main() {
     home: MyApp(),
   ));
 }
-
-
-
 
 class FavoriteWidget extends StatefulWidget{
   @override
@@ -320,7 +320,9 @@ class ProgressPage extends StatelessWidget {
       body: Center(
         child: FlatButton(
           onPressed: () {
-            Navigator.pop(context);
+            //Navigator.pop(context);
+            _showOptions(context);
+            _showPhotoLibrary();
           },
           child: Text('Go back!'),
         ),
@@ -346,4 +348,32 @@ class MusicPage extends StatelessWidget {
       ),
     );
   }
+}
+
+void _showOptions(BuildContext context) {
+
+  showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+            height: 150,
+            child: Column(children: <Widget>[
+              ListTile(
+                  leading: Icon(Icons.photo_camera),
+                  title: Text("Take a picture from camera")
+              ),
+              ListTile(
+                  leading: Icon(Icons.photo_library),
+                  title: Text("Choose from photo library")
+              )
+            ])
+        );
+      }
+  );
+
+}
+
+void _showPhotoLibrary() async {
+  final file = await ImagePicker.pickImage(source: ImageSource.gallery);
+  print(file.path);
 }
